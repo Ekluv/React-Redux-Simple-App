@@ -21949,7 +21949,7 @@
 	    _this.onSuggestionsFetchRequested = function (_ref2) {
 	      var value = _ref2.value;
 
-	      var url = 'http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q=' + value + '&key=' + _constants.YOUTUBE_API_KEY + '+"&format=5&alt=json&callback=?';
+	      var url = 'https://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q=' + value + '&key=' + _constants.YOUTUBE_API_KEY + '+"&format=5&alt=json&callback=?';
 	      _axios2.default.get(url).then(function (res) {
 	        var suggestions = res.data[1].map(function (data) {
 	          return data[0];
