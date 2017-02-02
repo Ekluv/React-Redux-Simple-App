@@ -7,7 +7,7 @@ import Autosuggest from 'react-autosuggest';
 
 import { fetchVideos } from '../actions';
 import { YOUTUBE_API_KEY } from '../constants';
-
+import $ from 'jquery';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -25,16 +25,20 @@ class SearchBar extends React.Component {
   }
   
   onSuggestionsFetchRequested = ({ value }) => {
-    var url = `http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q=${value}&key=${YOUTUBE_API_KEY}+"&format=5&alt=json&callback=?`;
-    axios.get(url).then((res) => {
-      var suggestions = res.data[1].map((data) => data[0]);
-      this.setState({
-      suggestions: suggestions
-    });
-    }).
-    catch((err) => {
-      window.console.log(err);
-    }); 
+    var self = this;
+    var url = `http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q=${value}&key=${YOUTUBE_API_KEY}+"&format=5&alt=json&callback=ekluv?`;
+    $.ajax({
+      url: url,  
+      dataType: 'jsonp',
+      success: function(res) {
+              var suggestions = res[1].map((data) => data[0]);
+                self.setState({
+                suggestions: suggestions
+              });
+          }
+      });
+
+
   };
 
   onSuggestionsClearRequested = () => {
