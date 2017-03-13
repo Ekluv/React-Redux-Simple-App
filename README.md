@@ -1,5 +1,5 @@
 # React-Redux-Simple-App
-Simple video search app made using React &amp; Redux
+Simple video search app made using React &amp; Redux https://ekluv.github.io/React-Redux-Simple-App/
 
 Checkout this repo, install dependencies, then start the gulp process with the following:
 
